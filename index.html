@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saeed Portfolio</title>
 
   <style>
@@ -12,102 +12,386 @@
       box-sizing:border-box;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       background:#080808;
-      color:white;
-      font-family:Arial, sans-serif;
+      color:#fff;
+      font-family:Arial, Helvetica, sans-serif;
+      overflow-x:hidden;
+    }
+
+    :root{
+      --red:#ff3b57;
+      --black:#080808;
+      --white:#ffffff;
+      --gray:#a7a7a7;
     }
 
     .hero{
       min-height:100vh;
+      position:relative;
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      padding:60px 8%;
       overflow:hidden;
+      background:
+        radial-gradient(circle at 75% 40%, rgba(255,59,87,.12), transparent 30%),
+        #080808;
     }
 
-    .hero-text{
-      max-width:600px;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:60px 60px;
+      mask-image:linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+      pointer-events:none;
     }
 
-    .small-title{
-      color:#ff3b57;
-      font-weight:bold;
-      letter-spacing:3px;
-      margin-bottom:20px;
+    .nav{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      padding:26px 7%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:10;
     }
 
-    h1{
-      font-size:80px;
-      line-height:0.95;
+    .logo{
+      font-size:20px;
       font-weight:900;
-      margin-bottom:25px;
+      letter-spacing:2px;
     }
 
-    h1 span{
-      color:#ff3b57;
+    .logo span{
+      color:var(--red);
     }
 
-    .hero-text p{
-      color:#cfcfcf;
-      font-size:18px;
-      line-height:1.6;
-      margin-bottom:30px;
+    .nav-links{
+      display:flex;
+      gap:28px;
+    }
+
+    .nav-links a{
+      color:#fff;
+      text-decoration:none;
+      font-size:13px;
+      letter-spacing:1px;
+      opacity:.75;
+      transition:.25s;
+    }
+
+    .nav-links a:hover{
+      color:var(--red);
+      opacity:1;
+    }
+
+    .hero-inner{
+      width:100%;
+      padding:120px 7% 50px;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-copy{
+      position:relative;
+      z-index:4;
+    }
+
+    .eyebrow{
+      color:var(--red);
+      font-weight:800;
+      letter-spacing:5px;
+      font-size:13px;
+      margin-bottom:22px;
+    }
+
+    .hero-title{
+      font-size:clamp(72px, 9vw, 150px);
+      line-height:.78;
+      font-weight:1000;
+      letter-spacing:-6px;
+      text-transform:uppercase;
+      margin-bottom:28px;
+    }
+
+    .hero-title .line-red{
+      color:var(--red);
+      display:block;
+      margin-left:70px;
+    }
+
+    .hero-sub{
+      max-width:560px;
+      color:#c8c8c8;
+      font-size:17px;
+      line-height:1.7;
+      margin-bottom:34px;
+    }
+
+    .cta-row{
+      display:flex;
+      align-items:center;
+      gap:16px;
     }
 
     .btn{
-      display:inline-block;
-      padding:14px 28px;
-      background:#ff3b57;
-      color:white;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:170px;
+      height:54px;
+      padding:0 28px;
+      background:var(--red);
+      border-radius:999px;
+      color:#fff;
       text-decoration:none;
-      border-radius:50px;
-      font-weight:bold;
+      font-weight:900;
+      font-size:14px;
+      transition:.25s;
     }
 
-    .hero-image{
-      width:430px;
-      height:560px;
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 30px rgba(255,59,87,.25);
+    }
+
+    .small-note{
+      font-size:12px;
+      color:#777;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .portrait-zone{
       position:relative;
+      height:650px;
       display:flex;
-      align-items:flex-end;
+      align-items:center;
       justify-content:center;
     }
 
-    .hero-image::before{
+    .red-orbit{
+      position:absolute;
+      width:470px;
+      height:470px;
+      border-radius:50%;
+      background:var(--red);
+      top:48%;
+      left:53%;
+      transform:translate(-50%,-50%);
+      z-index:0;
+      box-shadow:
+        0 0 60px rgba(255,59,87,.18),
+        inset 0 0 50px rgba(0,0,0,.08);
+    }
+
+    .red-orbit::before{
       content:"";
       position:absolute;
-      width:360px;
-      height:360px;
-      background:#ff3b57;
+      width:560px;
+      height:560px;
+      border:1px solid rgba(255,255,255,.08);
       border-radius:50%;
-      top:80px;
-      z-index:0;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
     }
 
-    .hero-image img{
-      width:100%;
+    .red-orbit::after{
+      content:"";
+      position:absolute;
+      width:620px;
+      height:620px;
+      border:1px solid rgba(255,59,87,.16);
+      border-radius:50%;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+    }
+
+    .portrait-frame{
       position:relative;
-      z-index:1;
-      border-radius:20px;
+      width:470px;
+      z-index:2;
+      transform:translateY(40px);
     }
 
-    @media(max-width:900px){
-      .hero{
-        flex-direction:column;
+    .portrait-frame img{
+      width:100%;
+      display:block;
+      position:relative;
+      z-index:2;
+      filter:drop-shadow(0 28px 35px rgba(0,0,0,.5));
+    }
+
+    .portrait-card{
+      position:absolute;
+      right:-20px;
+      bottom:35px;
+      width:160px;
+      padding:14px;
+      background:rgba(10,10,10,.82);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.08);
+      z-index:4;
+    }
+
+    .portrait-card strong{
+      color:var(--red);
+      display:block;
+      font-size:22px;
+      margin-bottom:5px;
+    }
+
+    .portrait-card span{
+      font-size:11px;
+      color:#bdbdbd;
+      line-height:1.5;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .side-word{
+      position:absolute;
+      right:-88px;
+      top:48%;
+      transform:rotate(90deg);
+      font-size:11px;
+      letter-spacing:6px;
+      color:#565656;
+      text-transform:uppercase;
+    }
+
+    .ticker{
+      position:absolute;
+      bottom:0;
+      left:-3%;
+      width:106%;
+      background:var(--red);
+      border-top:1px solid rgba(255,255,255,.12);
+      border-bottom:1px solid rgba(255,255,255,.12);
+      transform:rotate(-2deg);
+      overflow:hidden;
+      z-index:8;
+    }
+
+    .ticker-track{
+      width:max-content;
+      display:flex;
+      gap:28px;
+      padding:11px 0;
+      animation:ticker 18s linear infinite;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:2px;
+      color:#fff;
+      text-transform:uppercase;
+    }
+
+    @keyframes ticker{
+      from{ transform:translateX(0); }
+      to{ transform:translateX(-50%); }
+    }
+
+    .floating-dot{
+      position:absolute;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--red);
+      box-shadow:0 0 25px rgba(255,59,87,.8);
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .dot1{ left:5%; top:28%; }
+    .dot2{ right:8%; top:20%; animation-delay:1s; }
+    .dot3{ right:35%; bottom:14%; animation-delay:2s; }
+
+    @keyframes float{
+      0%,100%{ transform:translateY(0); opacity:.7; }
+      50%{ transform:translateY(-14px); opacity:1; }
+    }
+
+    @media(max-width:1000px){
+      .hero-inner{
+        grid-template-columns:1fr;
         text-align:center;
-        padding-top:100px;
+        padding-top:140px;
       }
 
-      h1{
-        font-size:52px;
+      .hero-title{
+        letter-spacing:-3px;
       }
 
-      .hero-image{
-        width:320px;
-        height:auto;
-        margin-top:40px;
+      .hero-title .line-red{
+        margin-left:0;
+      }
+
+      .hero-sub{
+        margin-left:auto;
+        margin-right:auto;
+      }
+
+      .cta-row{
+        justify-content:center;
+      }
+
+      .portrait-zone{
+        height:520px;
+      }
+
+      .portrait-frame{
+        width:360px;
+      }
+
+      .red-orbit{
+        width:360px;
+        height:360px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .side-word{
+        display:none;
+      }
+    }
+
+    @media(max-width:600px){
+      .hero-title{
+        font-size:58px;
+        line-height:.84;
+      }
+
+      .portrait-zone{
+        height:440px;
+      }
+
+      .portrait-frame{
+        width:300px;
+      }
+
+      .red-orbit{
+        width:300px;
+        height:300px;
+      }
+
+      .portrait-card{
+        right:0;
+        bottom:10px;
       }
     }
   </style>
@@ -117,24 +401,84 @@
 
   <section class="hero">
 
-    <div class="hero-text">
-      <div class="small-title">GRAPHIC DESIGNER</div>
+    <nav class="nav">
+      <div class="logo">SAEED<span>.</span></div>
 
-      <h1>
-        SAEED<br>
-        <span>PORTFOLIO</span>
-      </h1>
+      <div class="nav-links">
+        <a href="#">HOME</a>
+        <a href="#">WORK</a>
+        <a href="#">ABOUT</a>
+        <a href="#">CONTACT</a>
+      </div>
+    </nav>
 
-      <p>
-        Branding, Social Media, Print Design and Visual Identity.
-        I create bold visual experiences with clean details.
-      </p>
+    <div class="floating-dot dot1"></div>
+    <div class="floating-dot dot2"></div>
+    <div class="floating-dot dot3"></div>
 
-      <a href="#" class="btn">VIEW MY WORK</a>
+    <div class="hero-inner">
+
+      <div class="hero-copy">
+        <div class="eyebrow">GRAPHIC DESIGNER / VISUAL CREATIVE</div>
+
+        <h1 class="hero-title">
+          SAEED
+          <span class="line-red">PORTFOLIO</span>
+        </h1>
+
+        <p class="hero-sub">
+          Branding, social media, print design and visual identities.
+          I create bold, clean and memorable visual experiences.
+        </p>
+
+        <div class="cta-row">
+          <a href="#" class="btn">VIEW MY WORK</a>
+          <span class="small-note">Available for creative projects</span>
+        </div>
+      </div>
+
+      <div class="portrait-zone">
+
+        <div class="red-orbit"></div>
+
+        <div class="portrait-frame">
+          <img src="profile.png" alt="Saeed">
+
+          <div class="portrait-card">
+            <strong>01</strong>
+            <span>Designer<br>Portfolio<br>2026</span>
+          </div>
+        </div>
+
+        <div class="side-word">BRANDING • PRINT • SOCIAL MEDIA</div>
+      </div>
+
     </div>
 
-    <div class="hero-image">
-      <img src="profile.png" alt="Saeed">
+    <div class="ticker">
+      <div class="ticker-track">
+        <span>BRANDING</span>
+        <span>•</span>
+        <span>PRINT DESIGN</span>
+        <span>•</span>
+        <span>SOCIAL MEDIA</span>
+        <span>•</span>
+        <span>VISUAL IDENTITY</span>
+        <span>•</span>
+        <span>PACKAGING</span>
+        <span>•</span>
+
+        <span>BRANDING</span>
+        <span>•</span>
+        <span>PRINT DESIGN</span>
+        <span>•</span>
+        <span>SOCIAL MEDIA</span>
+        <span>•</span>
+        <span>VISUAL IDENTITY</span>
+        <span>•</span>
+        <span>PACKAGING</span>
+        <span>•</span>
+      </div>
     </div>
 
   </section>
