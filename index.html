@@ -4,14 +4,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saeed Portfolio</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#080808;
+      color:white;
+      font-family:Arial, sans-serif;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:60px 8%;
+      overflow:hidden;
+    }
+
+    .hero-text{
+      max-width:600px;
+    }
+
+    .small-title{
+      color:#ff3b57;
+      font-weight:bold;
+      letter-spacing:3px;
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:80px;
+      line-height:0.95;
+      font-weight:900;
+      margin-bottom:25px;
+    }
+
+    h1 span{
+      color:#ff3b57;
+    }
+
+    .hero-text p{
+      color:#cfcfcf;
+      font-size:18px;
+      line-height:1.6;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 28px;
+      background:#ff3b57;
+      color:white;
+      text-decoration:none;
+      border-radius:50px;
+      font-weight:bold;
+    }
+
+    .hero-image{
+      width:430px;
+      height:560px;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+    }
+
+    .hero-image::before{
+      content:"";
+      position:absolute;
+      width:360px;
+      height:360px;
+      background:#ff3b57;
+      border-radius:50%;
+      top:80px;
+      z-index:0;
+    }
+
+    .hero-image img{
+      width:100%;
+      position:relative;
+      z-index:1;
+      border-radius:20px;
+    }
+
+    @media(max-width:900px){
+      .hero{
+        flex-direction:column;
+        text-align:center;
+        padding-top:100px;
+      }
+
+      h1{
+        font-size:52px;
+      }
+
+      .hero-image{
+        width:320px;
+        height:auto;
+        margin-top:40px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <h1>Saeed Portfolio</h1>
-  <p>Graphic Designer</p>
+  <section class="hero">
 
-  <img src="profile.png" alt="Profile Photo" width="350">
+    <div class="hero-text">
+      <div class="small-title">GRAPHIC DESIGNER</div>
+
+      <h1>
+        SAEED<br>
+        <span>PORTFOLIO</span>
+      </h1>
+
+      <p>
+        Branding, Social Media, Print Design and Visual Identity.
+        I create bold visual experiences with clean details.
+      </p>
+
+      <a href="#" class="btn">VIEW MY WORK</a>
+    </div>
+
+    <div class="hero-image">
+      <img src="profile.png" alt="Saeed">
+    </div>
+
+  </section>
 
 </body>
 </html>
